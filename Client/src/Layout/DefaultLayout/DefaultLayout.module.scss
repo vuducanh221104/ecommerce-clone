@@ -1,0 +1,23 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.content {
+    padding-top: 12px;
+}
+
+.footer {
+    margin-top: 15px;
+}
+
+/* > PC  */
+@media (min-width: 991px) {
+    .content {
+        padding-top: 62px;
+    }
+}

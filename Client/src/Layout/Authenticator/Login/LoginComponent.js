@@ -19,7 +19,7 @@ function LoginComponent() {
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const [showPassword, setShowPassword] = useState(false);
-    const [showError,setShowError] = useState(false);
+    const [showError, setShowError] = useState(false);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -35,8 +35,8 @@ function LoginComponent() {
         onSubmit: async (values) => {
             setLoading(true);
             const dataLogin = await loginUser(values, dispatch, navigate);
-            if(dataLogin===undefined){
-                setShowError(true)
+            if (dataLogin === undefined) {
+                setShowError(true);
             }
             setLoading(false);
         },
@@ -107,9 +107,7 @@ function LoginComponent() {
                                             </div>
                                         </div>
                                     </div>
-                                    {showError && 
-                                         <p className={cx('error-message')}>Valid username or password</p>
-                                    }
+                                    {showError && <p className={cx('error-message')}>Valid username or password</p>}
                                     <button className={cx('btn-login')}>Login</button>
                                     <div className={cx('login-forget')}>
                                         <Link to="/forgotPassword">
@@ -133,7 +131,7 @@ function LoginComponent() {
                                     <div className={cx('login-end')}>
                                         <p>
                                             {' '}
-                                            Dont`t have a account? <Link to="/register">Sign in</Link>
+                                            Dont`t have a account? <Link to="/register">Register</Link>
                                         </p>
                                     </div>
                                 </div>

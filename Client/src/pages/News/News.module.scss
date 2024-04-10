@@ -4,6 +4,7 @@
 .title {
     font-size: 1.6rem;
     font-weight: 600;
+    display: block;
 }
 
 .news-list {
@@ -132,7 +133,15 @@
     color: #fff;
 }
 
+@media (min-width: 991px) {
+    .not-news {
+        padding-top: 65px;
+    }
+}
 @media (min-width: 765px) and (max-width: 991px) {
+    .not-news {
+        padding-top: 30px;
+    }
     .wrapper {
         padding: 0 !important;
     }
@@ -160,7 +169,9 @@
     .wrapper {
         padding: 0 !important;
     }
-
+    .not-news {
+        padding-top: 30px;
+    }
     .title-right {
         color: var(--color-hover);
         margin-top: 20px;

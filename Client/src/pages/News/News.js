@@ -36,15 +36,12 @@ function News() {
         setVisibleCount((prevCount) => prevCount + 5);
     };
 
-    if(!data){
+    if (!data) {
         return (
-            <div style={{display:'flex',alignItems:'center',justifyContent:"center",padding:'20px'}}>
-
-
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={cx('not-news')}>
                 <h2 className={cx('title')}>Không có bài báo nào !!</h2>
-
             </div>
-        )
+        );
     }
 
     return (
@@ -52,9 +49,8 @@ function News() {
             <div className={cx('container')}>
                 <div className={cx('row')}>
                     {/* LEFT */}
-                    <div className={cx('left', 'col-12 col-lg-8','mt-5')}>
+                    <div className={cx('left', 'col-12 col-lg-8', 'mt-5')}>
                         <h2 className={cx('title')}>Gần Đây Nhất</h2>
-                        
                         <div className={cx('content')}>
                             <ul className={cx('news-list')}>
                                 {data?.map((item, index) => (
@@ -80,7 +76,7 @@ function News() {
                                             </div>
                                             <div className={cx('news-image', 'col-4')}>
                                                 <LazyLoad>
-                                                    <img src={item.cover_image} className={cx('lazyload','image')} />
+                                                    <img src={item.cover_image} className={cx('lazyload', 'image')} />
                                                 </LazyLoad>
                                             </div>
                                         </Link>
@@ -107,7 +103,7 @@ function News() {
                         )}
                     </div>
                     {/*  RIGHT*/}
-                    <div className={cx('right', 'col-12 col-lg-4','mt-5')}>
+                    <div className={cx('right', 'col-12 col-lg-4', 'mt-5')}>
                         <h2 className={cx('title-right')}>Cộng Đồng Minh Tuấn Mobile</h2>
                         <div className={cx('social', 'd-flex', 'mt-5')}>
                             <div className={cx('social-item-facebook')}>

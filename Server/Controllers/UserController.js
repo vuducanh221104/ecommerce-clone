@@ -47,7 +47,7 @@ async function sendConfirmationEmail(email, verificationToken) {
             to: email,
             subject: 'Xác nhận địa chỉ email',
             html: `<p>Chào mừng bạn đến với trang web ! Hãy nhấp vào liên kết dưới đây để xác nhận địa chỉ email của bạn:</p>
-            <a href="${process.env.BASE_URL_SERVER}/api/user/verify-email/${verificationToken}">Xác nhận địa chỉ email</a>`,
+            <a href="${process.env.DOMAIN}/api/user/verify-email/${verificationToken}">Xác nhận địa chỉ email</a>`,
         };
         await transporter.sendMail(mailOptions);
     } catch (err) {
@@ -63,7 +63,7 @@ async function sendConfirmationNewEmail(email, verificationToken) {
         to: email,
         subject: 'Xác nhận địa chỉ email',
         html: `<p>Chào mừng bạn đến với trang web ! Hãy nhấp vào liên kết dưới đây để xác nhận địa chỉ email của bạn:</p>
-               <a href="${process.env.BASE_URL_SERVER}/api/user/confirm-new-email/${verificationToken}">Xác nhận địa chỉ email</a>`,
+               <a href="${process.env.DOMAIN}/api/user/confirm-new-email/${verificationToken}">Xác nhận địa chỉ email</a>`,
     };
 
     try {
@@ -81,7 +81,7 @@ async function sendConfirmationForgotPass(email, forgotPassToken) {
         to: email,
         subject: 'Xác nhận địa chỉ email',
         html: `<p>Chào mừng bạn đến với trang web ! Hãy nhấp vào liên kết dưới đây để xác nhận địa chỉ email của bạn:</p>
-        <a href="${process.env.BASE_URL_CLIENT}/forgotPassword/comfirm/?email=${email}&token=${forgotPassToken}">Xác nhận địa chỉ email</a>`,
+        <a href="${process.env.DOMAIN}/forgotPassword/comfirm/?email=${email}&token=${forgotPassToken}">Xác nhận địa chỉ email</a>`,
     };
 
     try {
@@ -226,15 +226,14 @@ class UserController {
             const user = await User.findOne({ verificationToken: token });
 
             if (!user) {
-                // Mã token không hợp lệ
-                res.redirect(process.env.BASE_URL_SERVER);
+                res.redirect('https://www.cloneminhtuan.id.vn/');
             }
 
             // Xác nhận email và xóa mã token xác nhận
             user.isVerified = true;
             user.verificationToken = undefined;
             await user.save();
-            res.redirect(process.env.BASE_URL_SERVER);
+            res.redirect('https://www.cloneminhtuan.id.vn/verify/successful');
         } catch (error) {
             // Xử lý lỗi nếu có
             res.status(500).json({ error: 'Server error' });

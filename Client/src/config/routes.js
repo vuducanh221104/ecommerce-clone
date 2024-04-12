@@ -18,6 +18,7 @@ const routes = {
         contentProduct: '/product/:slug',
         profile: '/profile',
         verify: '/verify',
+        verifySuccess: '/verify/success',
         changePassword: '/changePassword',
         changeEmail: '/changeEmail',
         changeAvatar: '/changeAvatar',

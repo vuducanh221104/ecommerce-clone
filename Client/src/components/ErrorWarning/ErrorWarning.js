@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 function ErrorWarning({ message = '', icon = faCircleXmark, title = 'ERROR', linkTo = '/' }) {
     return (
-        <div className={cx('wrapper pt-0 pt-lg-0 container')}>
+        <div className={cx('wrapper pt-0 pt-lg-0', 'container')}>
             <div className={cx('content')}>
                 <div className={cx('icon-div')}>
                     <FontAwesomeIcon icon={icon} className={cx('icon-block')} />

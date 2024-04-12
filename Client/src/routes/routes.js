@@ -44,6 +44,8 @@ import CartPayment from '~/pages/Cart/CartPayment';
 import CartComplete from '~/pages/Cart/CartComplete';
 import Search from '~/pages/Search';
 import ForgotPassword from '~/pages/ForgotPassword';
+import NotiVerifyEmail from '~/pages/VerifyEmail/NotiVerifyEmail';
+
 // import ConfirmForgotPass from '~/pages/ForgotPassword/ConfirmForgotPass';
 
 // Public Routes
@@ -59,6 +61,7 @@ const publicRoutes = [
     { path: config.routes.product, component: Slug },
     { path: config.routes.contentProduct, component: SlugContent },
     { path: config.routes.verify, component: VerifyEmail, layout: HeaderOnly },
+    { path: config.routes.verifySuccess, component: NotiVerifyEmail, layout: HeaderOnly },
     { path: config.routes.home, component: Home },
 
     { path: config.routes.user, component: User, layout: HeaderOnly },
@@ -85,6 +88,7 @@ const privateRoutes = [
     { path: config.routes.product, component: Slug },
     { path: config.routes.contentProduct, component: SlugContent },
     { path: config.routes.verify, component: VerifyEmail, layout: HeaderOnly },
+    { path: config.routes.verifySuccess, component: NotiVerifyEmail, layout: HeaderOnly },
     { path: config.routes.home, component: Home },
     { path: config.routes.user, component: User, layout: HeaderOnly },
     { path: config.routes.cart, component: Cart, layout: LayoutCart },

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Form } from 'antd';
 import ModalLoading from '~/pages/Admin/components/ModalLoading';
 import WrapperContainer from '~/pages/Admin/components/WrapperContainer';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useFormikUser } from '~/FormikConfig/FormikUser';
 import MessageFormikError from '~/components/MessageFormikError';
@@ -26,7 +26,6 @@ function AddUser() {
 
     const formik = useFormikUser();
 
-
     const handleFileChange = (e, nameValue) => {
         const target = e.target.files[0];
         formik.setFieldValue(nameValue, target);
@@ -45,10 +44,9 @@ function AddUser() {
 
                 formData.append('img', formik.values.avatar);
 
-                if(formik.values.avatar){
+                if (formik.values.avatar) {
                     const dataAvatar = await uploadImageColor(formData);
                     formik.values.avatar = dataAvatar.data[0].path;
-
                 }
                 await addUser(formik.values);
                 formik.resetForm();

@@ -15,13 +15,37 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const reqData = req.body;
     try {
-        const newProductDetail = new Users(reqData);
-        const savedProductDetail = await newProductDetail.save();
-        res.status(201).json(savedProductDetail);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(reqData.password, salt);
+
+        const newUser = new User({
+            avatar: reqData.avatar ? reqData.avatar : null,
+            fullname: reqData.fullname,
+            username: reqData.username,
+            password: hashedPassword,
+            email: reqData.email,
+            role: reqData.role,
+            isVerified: true,
+        });
+        const savedUser = await newUser.save();
+        res.status(200).json(savedUser);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to create product detail' });
+        res.status(500).json({ error: 'Failed to create user' });
     }
 });
+
+// router.post('/', async (req, res) => {
+//     const reqData = req.body;
+//     const { password } = req.body;
+//     try {
+//         const
+//         const newProductDetail = new Users(reqData);
+//         const savedProductDetail = await newProductDetail.save();
+//         res.status(201).json(savedProductDetail);
+//     } catch (error) {
+//         res.status(500).json({ error: 'Failed to create product detail' });
+//     }
+// });
 
 router.delete('/:id', async (req, res) => {
     const idList = req.params.id;

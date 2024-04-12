@@ -331,11 +331,12 @@ class UserController {
                 role: 0,
             });
 
+            const savedUser = await newUser.save();
             // Gửi email xác nhận
-            await sendConfirmationEmail(email, newUser.verificationToken, res);
+            await sendConfirmationEmail(email, newUser.verificationToken);
 
             // Trả về thông tin user đã được tạo
-            res.status(200).json(newUser);
+            res.status(200).json(savedUser);
         } catch (error) {
             // Xử lý lỗi nếu có
             console.error(error);

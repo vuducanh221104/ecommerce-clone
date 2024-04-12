@@ -13,8 +13,8 @@ services:
       - 27018:27017
     expose:
       - 27017
-    # volumes:
-    #     - ./mongodb-data/:/data/db
+    volumes:
+      - ../mongodb-data/:/data/db
 
   backend:
     build:

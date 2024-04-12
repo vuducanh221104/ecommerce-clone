@@ -1,6 +1,7 @@
 const express = require('express');
 const Users = require('../../../Models/Users');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
     try {
@@ -18,7 +19,7 @@ router.post('/', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(reqData.password, salt);
 
-        const newUser = new User({
+        const newUser = new Users({
             avatar: reqData.avatar ? reqData.avatar : null,
             fullname: reqData.fullname,
             username: reqData.username,
@@ -30,6 +31,7 @@ router.post('/', async (req, res) => {
         const savedUser = await newUser.save();
         res.status(200).json(savedUser);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Failed to create user' });
     }
 });

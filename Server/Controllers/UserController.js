@@ -230,10 +230,10 @@ class UserController {
             }
 
             // Xác nhận email và xóa mã token xác nhận
+            res.redirect('https://www.cloneminhtuan.id.vn/verify/success');
             user.isVerified = true;
             user.verificationToken = undefined;
             await user.save();
-            res.redirect('https://www.cloneminhtuan.id.vn/verify/successful');
         } catch (error) {
             // Xử lý lỗi nếu có
             res.status(500).json({ error: 'Server error' });

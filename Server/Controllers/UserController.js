@@ -5,26 +5,15 @@ const fs = require('fs');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-
+const oAuth2 = require('../oAuth2/client_secret');
 
 async function createOAuth2Transporter() {
     try {
-        const credentials = JSON.parse(
-            fs.readFileSync(
-                '/Users/ducanhh/CODE/Ecommerce Expressjs + Reactjs/Server/oAuth2/client_secret_495074441762-ravijsdevm3no1q7a6sb0hu92ofomr6a.apps.googleusercontent.com.json',
-            ),
-        );
-
-        const oAuth2Client = new google.auth.OAuth2(
-            credentials.web.client_id,
-            credentials.web.client_secret,
-            credentials.web.redirect_uris[0],
-        );
+        const oAuth2Client = new google.auth.OAuth2(oAuth2.client_id, oAuth2.client_secret, oAuth2.redirect_uris[0]);
 
         oAuth2Client.setCredentials({
-            access_token: credentials.web.access_token,
-            refresh_token: credentials.web.refresh_token,
+            access_token: oAuth2.access_token,
+            refresh_token: oAuth2.refresh_token,
         });
 
         const accessToken = await oAuth2Client.getAccessToken();
@@ -34,16 +23,17 @@ async function createOAuth2Transporter() {
             auth: {
                 type: 'OAuth2',
                 user: 'vuducanh22112004@gmail.com',
-                clientId: credentials.web.client_id,
-                clientSecret: credentials.web.client_secret,
-                refreshToken: credentials.web.refresh_token,
+                clientId: oAuth2.client_id,
+                clientSecret: oAuth2.client_secret,
+                refreshToken: oAuth2.refresh_token,
                 accessToken: accessToken,
             },
         });
 
         return transporter;
     } catch (err) {
-        res.status(500).json('Error creating OAuth2 transporter:', err);
+        // res.status(500).json('Error creating OAuth2 transporter:', err);
+        console.log(err);
         throw err;
     }
 }
@@ -59,7 +49,7 @@ async function sendConfirmationEmail(email, verificationToken) {
             html: `<p>Chào mừng bạn đến với trang web ! Hãy nhấp vào liên kết dưới đây để xác nhận địa chỉ email của bạn:</p>
             <a href="${process.env.BASE_URL_SERVER}/api/user/verify-email/${verificationToken}">Xác nhận địa chỉ email</a>`,
         };
-        const info = await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
     } catch (err) {
         console.log(err);
     }
@@ -266,7 +256,7 @@ class UserController {
             }
 
             // Gửi lại email xác nhận
-            await sendConfirmationEmail(email, user.verificationToken);
+            await sendConfirmationEmail(email, user.verificationToken, res);
 
             res.status(200).json({ message: 'Confirmation email resent successfully' });
         } catch (error) {
@@ -343,7 +333,7 @@ class UserController {
             });
 
             // Gửi email xác nhận
-            await sendConfirmationEmail(email, newUser.verificationToken);
+            await sendConfirmationEmail(email, newUser.verificationToken, res);
 
             // Trả về thông tin user đã được tạo
             res.status(200).json(newUser);
@@ -374,7 +364,7 @@ class UserController {
                 process.env.JWT_ACCESS_KEY,
                 { expiresIn: '30s' },
             );
-    
+
             const refreshToken = jwt.sign(
                 {
                     _id: user._id,

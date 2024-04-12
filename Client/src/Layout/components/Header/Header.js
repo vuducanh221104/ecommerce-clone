@@ -170,7 +170,7 @@ function Header({ login = true }) {
                                                 {user ? (
                                                     <div
                                                         className={cx('img-avt', 'col-auto')}
-                                                        style={{ paddingLeft: '35px', marginTop: '-5px' }}
+                                                        style={{ paddingLeft: '5px', marginTop: '-5px' }}
                                                     >
                                                         <HeadlessTippy
                                                             interactive

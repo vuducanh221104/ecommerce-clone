@@ -35,12 +35,14 @@ router.post('/registerUser', userController.registerUser);
 // Verify (in gmail)
 router.get('/verify-email/:token', userController.verifyEmail);
 router.post('/refresh', userController.requestRefreshToken);
+
 //AUTH
 router.post('/logoutUser', userController.logoutUser); //
 router.post('/loginUser', userController.loginUser);
 router.patch('/:id', userController.editId);
 router.post('/change-email', userController.changEmail);
 router.patch('/change-password', userController.changePassword);
+
 // Handle Email
 router.post('/reset-password', userController.fotgotPassword);
 router.post('/confirm-forgot-pass', userController.comfirmForgotPassword);

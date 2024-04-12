@@ -234,7 +234,7 @@ class UserController {
             user.isVerified = true;
             user.verificationToken = undefined;
             await user.save();
-            res.redirect('http://localhost:3000');
+            res.redirect(process.env.BASE_URL_SERVER);
         } catch (error) {
             // Xử lý lỗi nếu có
             res.status(500).json({ error: 'Server error' });

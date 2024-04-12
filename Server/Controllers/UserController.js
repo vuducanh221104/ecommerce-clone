@@ -227,7 +227,7 @@ class UserController {
 
             if (!user) {
                 // Mã token không hợp lệ
-                return res.status(400).json({ message: 'Invalid verification token' });
+                res.redirect(process.env.BASE_URL_SERVER);
             }
 
             // Xác nhận email và xóa mã token xác nhận
@@ -256,7 +256,7 @@ class UserController {
             }
 
             // Gửi lại email xác nhận
-            await sendConfirmationEmail(email, user.verificationToken, res);
+            await sendConfirmationEmail(email, user.verificationToken);
 
             res.status(200).json({ message: 'Confirmation email resent successfully' });
         } catch (error) {

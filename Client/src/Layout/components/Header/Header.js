@@ -111,7 +111,6 @@ function Header({ login = true }) {
         <>
             {/* MiniChat */}
             <MiniChat />
-
             <header className={cx('clearfix')}>
                 {/* Header */}
                 <div className={cx('header-content')}>

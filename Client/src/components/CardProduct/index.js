@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.css';
 import imagesIphone14 from '~/assets/Image-iphone';
+
 import FormattedPrice from '../FormattedPrice/FormattedPrice';
 import PropTypes from 'prop-types';
+import LazyLoad from 'react-lazyload';
 
 const cx = classNames.bind(styles);
 function CardProduct({ data }) {
@@ -14,7 +16,9 @@ function CardProduct({ data }) {
         <>
             <div className={cx('product')}>
                 <Link to={`/product/${data.slug}`}>
-                    <img src={`${data.image}`} className={`image-thumb lazyload`} loading="lazy" />
+                    <LazyLoad>
+                        <img src={`${data.image}`} className={`image-thumb lazyload`} />
+                    </LazyLoad>
                     {data.category.brand === 'Apple' || 'apple' ? (
                         <img src={imagesIphone14.authorIcon} className={cx('author-icon')} />
                     ) : (

@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useEffect, useState } from 'react';
 import { newsLimit } from '~/services/newsServices';
+import LazyLoad from 'react-lazyload';
 const cx = classNames.bind(styles);
 
 function News() {
@@ -55,7 +56,9 @@ function News() {
                                 <div className={cx('news-item')}>
                                     <div className={cx('img-box')}>
                                         <Link to={`/news/${item.slug}`}>
-                                            <img src={item.cover_image} alt="" className={cx('img-news')} />
+                                            <LazyLoad>
+                                                <img src={item.cover_image} alt="" className={cx('img-news')} />
+                                            </LazyLoad>
                                         </Link>
                                     </div>
                                     <div className={cx('news-info')}>
@@ -73,7 +76,9 @@ function News() {
                             <div className={cx('news-item')} key={item._id}>
                                 <div className={cx('img-box')}>
                                     <Link to={`/news/${item.slug}`}>
-                                        <img src={item.cover_image} alt="" className={cx('img-news')} />
+                                        <LazyLoad>
+                                            <img src={item.cover_image} alt="" className={cx('img-news')} />
+                                        </LazyLoad>
                                     </Link>
                                 </div>
                                 <div className={cx('news-info')}>

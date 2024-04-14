@@ -6,28 +6,28 @@ const mongooseDelete = require('mongoose-delete');
 const Products = new Schema(
     {
         name: { type: String, maxLength: 255 },
-        image: { type: String},
+        image: { type: String },
         price: { type: Number, maxLength: 255 },
-        price_discount: { type: Number, maxLength: 255 },
-        price_prepay: { type: Number, maxLength: 255 },
-        percent_discount: { type: Number, maxLength: 255 },
+        price_discount: { type: Number, maxLength: 50 },
+        price_prepay: { type: Number, maxLength: 50 },
+        percent_discount: { type: Number, maxLength: 50 },
         brand: { type: String, maxLength: 100 },
-        type:{type:String},
+        type: { type: String },
         category: {
             type: Object,
             category_slug: { type: String, maxLength: 100 },
-            category_item_slug: { type: String, maxLength: 100 }, 
-            category_item_child_slug: { type: String, maxLength: 100},
+            category_item_slug: { type: String, maxLength: 100 },
+            category_item_child_slug: { type: String, maxLength: 100 },
         },
         rating: { type: Number },
-        stored:{type:Number},
+        stored: { type: Number },
         slug: { type: String, slug: 'name', unique: true },
         createAt: { type: Date, default: Date.now },
         updateAt: { type: Date, default: Date.now },
     },
     {
-        collection:'products'
-    }
+        collection: 'products',
+    },
 );
 
 mongoose.plugin(slug);

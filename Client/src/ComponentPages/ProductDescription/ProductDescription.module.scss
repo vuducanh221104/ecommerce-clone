@@ -177,7 +177,7 @@
     min-width: 100%;
     min-height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 9999;
 
     transition: all 0.7s ease;
 }
@@ -203,7 +203,7 @@
 .modal-title {
     position: sticky; /* Thay thế relative bằng sticky */
     top: 0; /* Đặt vị trí dính ở đầu trang */
-    z-index: 999; /* Đảm bảo tiêu đề hiển thị trên cùng */
+    z-index: 9999; /* Đảm bảo tiêu đề hiển thị trên cùng */
     margin-right: 0 !important;
     padding: 1.2rem 1.5rem 1rem !important;
     background: var(--color-red);

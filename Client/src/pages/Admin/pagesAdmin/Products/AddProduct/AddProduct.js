@@ -58,7 +58,7 @@ function AddProduct() {
                     name: formik.values.name,
                     price: formik.values.price,
                     price_discount: formik.values.price_discount,
-                    price_prepay: formik.values.prepay,
+                    price_prepay: formik.values.price_prepay,
                     percent_discount: formik.values.percent_discount,
                     brand: formik.values.brand,
                     type: formik.values.type,
@@ -96,7 +96,7 @@ function AddProduct() {
                     name: formik.values.name,
                     images: formik.values.images,
                     price: formik.values.price,
-                    price_prepay: formik.values.prepay,
+                    price_prepay: formik.values.price_prepay,
                     color: formik.values.color,
                     subcategory_slug: formik.values.subcategory_slug,
                     storage: formik.values.storage,
@@ -432,7 +432,11 @@ function AddProduct() {
                                                         file={item.image}
                                                         index={index}
                                                         handleEdit={() =>
-                                                            editImage(formik.values.color, 'color', index)
+                                                            editImage(
+                                                                formik.values.color,
+                                                                `color[${index}].image`,
+                                                                index,
+                                                            )
                                                         }
                                                         handleFileChange={(e) =>
                                                             handleFileChange(e, `color[${index}].image`)

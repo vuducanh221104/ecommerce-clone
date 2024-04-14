@@ -259,7 +259,9 @@ function ProductInfo({ data }) {
                                         <FormattedPrice value={data.color[0].price} />
                                     )}
                                 </span>
-                                <span className={cx('price-real')}>{data.price}đ</span>
+                                <span className={cx('price-real')}>
+                                    <FormattedPrice value={data.price} />
+                                </span>
                             </div>
                             {/* PRODUCT-MEMORY */}
                             <div
@@ -280,7 +282,9 @@ function ProductInfo({ data }) {
                                         >
                                             <Link to={`/product/${data.link}`}>
                                                 <p className={cx('product-memory-name')}>{data.name}</p>
-                                                <p className={cx('product-memory-price')}>{data.price}đ</p>
+                                                <p className={cx('product-memory-price')}>
+                                                    <FormattedPrice value={data.price} />
+                                                </p>
                                             </Link>
                                         </div>
                                     );

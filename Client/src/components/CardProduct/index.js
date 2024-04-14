@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import LazyLoad from 'react-lazyload';
 import 'bootstrap/dist/css/bootstrap.css';
 import imagesIphone14 from '~/assets/Image-iphone';
 import FormattedPrice from '../FormattedPrice/FormattedPrice';
@@ -15,9 +14,7 @@ function CardProduct({ data }) {
         <>
             <div className={cx('product')}>
                 <Link to={`/product/${data.slug}`}>
-                    <LazyLoad>
-                        <img src={`${data.image}`} className={cx('image-thumb', 'lazyload')} />
-                    </LazyLoad>
+                    <img src={`${data.image}`} className={`${styles.imageThumb} lazyload`} loading="lazy" />
                     {data.category.brand === 'Apple' || 'apple' ? (
                         <img src={imagesIphone14.authorIcon} className={cx('author-icon')} />
                     ) : (

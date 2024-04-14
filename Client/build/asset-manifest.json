@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c869e95d.css",
-    "main.js": "/static/js/main.84fc6182.js",
+    "main.css": "/static/css/main.e72387cd.css",
+    "main.js": "/static/js/main.f908593d.js",
     "static/js/787.fe00223f.chunk.js": "/static/js/787.fe00223f.chunk.js",
     "static/media/SF-Pro-Display-Semibold.otf": "/static/media/SF-Pro-Display-Semibold.f50e0151c241f0e9d573.otf",
     "static/media/SF-Pro-Display-Medium.otf": "/static/media/SF-Pro-Display-Medium.e1d844da0ee028d4e288.otf",
@@ -65,8 +65,8 @@
     "static/media/icon-store.svg": "/static/media/icon-store.2b258d5afd3bf12c94d44b237bf65392.svg",
     "static/media/Sale-good.webp": "/static/media/Sale-good.cab10571e0ed0eb5e626.webp",
     "static/media/airPod.webp": "/static/media/airPod.84b340cf3cd24ab3ce5a.webp",
-    "static/media/Phone-used.webp": "/static/media/Phone-used.9c816c1ff0cd2fb2f3ef.webp",
     "index.html": "/index.html",
+    "static/media/Phone-used.webp": "/static/media/Phone-used.9c816c1ff0cd2fb2f3ef.webp",
     "static/media/icon-home-nav-moblie.svg": "/static/media/icon-home-nav-moblie.424cc7d4fd5f99d2275ff1440039d0df.svg",
     "static/media/samsung.webp": "/static/media/samsung.1d5abec48e036caee38d.webp",
     "static/media/HeadPhone.webp": "/static/media/HeadPhone.4386cce22229339d3d0a.webp",
@@ -75,12 +75,12 @@
     "static/media/Iphone.webp": "/static/media/Iphone.926c2d8387940fbe594d.webp",
     "static/media/laptop-double.webp": "/static/media/laptop-double.f34d8baa3aa1dcadbb24.webp",
     "static/media/macbook.webp": "/static/media/macbook.26140daf4abbf07a7524.webp",
-    "main.c869e95d.css.map": "/static/css/main.c869e95d.css.map",
-    "main.84fc6182.js.map": "/static/js/main.84fc6182.js.map",
+    "main.e72387cd.css.map": "/static/css/main.e72387cd.css.map",
+    "main.f908593d.js.map": "/static/js/main.f908593d.js.map",
     "787.fe00223f.chunk.js.map": "/static/js/787.fe00223f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c869e95d.css",
-    "static/js/main.84fc6182.js"
+    "static/css/main.e72387cd.css",
+    "static/js/main.f908593d.js"
   ]
 }

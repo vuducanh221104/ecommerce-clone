@@ -122,7 +122,7 @@ function Cart() {
 
         updateSelection(index, selectedColor, selectedColorData.image, selectedColorData.price);
     };
-
+    console.log(dataFromLocalStorage);
     return (
         <div className={cx('wrapper', 'pt-0 pt-lg-0', 'container')}>
             <div className={cx('cart')}>

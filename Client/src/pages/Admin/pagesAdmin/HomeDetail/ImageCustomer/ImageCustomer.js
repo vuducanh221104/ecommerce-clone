@@ -97,6 +97,7 @@ function ImageCustomer() {
                 .catch((error) => {
                     console.log('Upload failed:', error);
                     messageError();
+                    setLoading(false);
                 });
         } else {
             messageMissingInput();

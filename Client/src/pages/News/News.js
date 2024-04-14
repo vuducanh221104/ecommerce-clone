@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import NewsLatest from './NewsLatest/NewsLatest';
 import ExchangTime from '~/components/ExchangeTIme/ExchangTime';
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 import { news } from '~/services/newsServices';
 const cx = classNames.bind(styles);
 

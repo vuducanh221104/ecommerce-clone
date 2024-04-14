@@ -14,7 +14,7 @@ import CategoryBox from './ComponentCategory/CategoryBox';
 import News from '~/ComponentPages/News';
 import queryString from 'query-string';
 import CardProduct from '~/components/CardProduct';
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 import { category, categoryImage } from '~/services/categoryServices';
 import ModalLoading from '~/components/ModalLoading';
 const cx = classNames.bind(styles);

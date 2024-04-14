@@ -8,7 +8,7 @@ import imagesIphone14 from '~/assets/Image-iphone';
 
 import FormattedPrice from '../FormattedPrice/FormattedPrice';
 import PropTypes from 'prop-types';
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 
 const cx = classNames.bind(styles);
 function CardProduct({ data }) {
@@ -17,7 +17,7 @@ function CardProduct({ data }) {
             <div className={cx('product')}>
                 <Link to={`/product/${data.slug}`}>
                     <LazyLoad>
-                        <img src={`${data.image}`} className={`image-thumb lazyload`} />
+                        <img src={data.image} alt="Product Image" className={cx('image-thumb', 'lazyload')} />
                     </LazyLoad>
                     {data.category.brand === 'Apple' || 'apple' ? (
                         <img src={imagesIphone14.authorIcon} className={cx('author-icon')} />

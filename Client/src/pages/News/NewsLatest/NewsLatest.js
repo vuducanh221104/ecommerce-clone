@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faTags } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 import ExchangTime from '~/components/ExchangeTIme';
 import { newsLatest } from '~/services/newsServices';
 const cx = classNames.bind(styles);

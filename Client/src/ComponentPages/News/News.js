@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useEffect, useState } from 'react';
 import { newsLimit } from '~/services/newsServices';
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 const cx = classNames.bind(styles);
 
 function News() {

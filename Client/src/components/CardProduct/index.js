@@ -14,7 +14,7 @@ function CardProduct({ data }) {
         <>
             <div className={cx('product')}>
                 <Link to={`/product/${data.slug}`}>
-                    <img src={`${data.image}`} className={`${styles.imageThumb} lazyload`} loading="lazy" />
+                    <img src={`${data.image}`} className={`image-thumb lazyload`} loading="lazy" />
                     {data.category.brand === 'Apple' || 'apple' ? (
                         <img src={imagesIphone14.authorIcon} className={cx('author-icon')} />
                     ) : (

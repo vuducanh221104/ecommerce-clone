@@ -8,7 +8,7 @@ import images from '~/assets/images';
 import socketIOClient from 'socket.io-client';
 import { deleteAllRoom, chatHistory, deleteRoom, activeRoom } from '../../services/chatServices';
 
-const host = process.env.REACT_APP_BASE_URL;
+const host = process.env.CHAT_BASE_URL;
 
 const cx = classNames.bind(styles);
 function Chat({ role = 'admin' }) {

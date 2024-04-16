@@ -12,7 +12,6 @@ const host = process.env.REACT_APP_BASE_URL;
 
 const cx = classNames.bind(styles);
 function Chat({ role = 'admin' }) {
-    console.log(host);
     const [searchInput, setSearchInput] = useState('');
     const [roomName, setRoomName] = useState('');
     const [avatar, setAvatar] = useState('');
@@ -27,7 +26,6 @@ function Chat({ role = 'admin' }) {
     const messageContainerRef = useRef(null);
 
     console.log(roomName);
-    console.log(activeRooms);
     useEffect(() => {
         socketRef.current = socketIOClient.connect(host);
 
@@ -177,12 +175,173 @@ function Chat({ role = 'admin' }) {
     );
 
     return (
-        <Row>
-            <Col span={10}>test</Col>
-            <Col span={14} className={cx('wrapper-right')}>
-                test
-            </Col>
-        </Row>
+        <div className={cx('wrapper')}>
+            x
+            <Row>
+                <Col span={10}>
+                    <div className={cx('wrapper-left')}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <h2>Chats</h2>
+                            <Tooltip title="Delete All">
+                                <DeleteOutlined
+                                    style={{
+                                        color: '#ff4d4f',
+                                        cursor: 'pointer',
+                                        fontSize: '1.8rem',
+                                        marginRight: '20px',
+                                    }}
+                                    onClick={() => handleDelete('deleteAllRooms')}
+                                />
+                            </Tooltip>
+                        </div>
+                        <div className={cx('search')}>
+                            <input
+                                type="text"
+                                placeholder="Search "
+                                value={searchInput}
+                                onChange={(e) => setSearchInput(e.target.value)}
+                            />
+                            <SearchOutlined className={cx('icon-search')} />
+                        </div>
+                        <div className={cx('customer')}>
+                            <ul className={cx('customer-list')}>
+                                {filteredearchRoom.map((item, index) => (
+                                    <div className={cx('wrappper-customer-item')} key={index}>
+                                        <li
+                                            className={cx('customer-item')}
+                                            onClick={() => {
+                                                handleOtherRoom(item);
+                                            }}
+                                        >
+                                            <img
+                                                src={item.avatar || ''}
+                                                alt="image-customer"
+                                                className={cx('image-customer')}
+                                            />
+                                            <div className={cx('info')}>
+                                                <div className={cx('info-container')}>
+                                                    <h3 className={cx('name')}>{item.roomName}</h3>
+                                                    {/* <span className={cx('time')}> Time</span> */}
+                                                </div>
+                                                <div className={cx('chat-content')}>
+                                                    <p>{fullname}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <Tooltip title="Delete">
+                                            <DeleteOutlined
+                                                style={{
+                                                    color: '#ff4d4f',
+                                                    cursor: 'pointer',
+                                                    fontSize: '2rem',
+                                                    marginLeft: '10px',
+                                                }}
+                                                className={cx('icon-trash')}
+                                                onClick={() => {
+                                                    handleDelete('deleteRoom');
+                                                }}
+                                            />
+                                        </Tooltip>
+                                    </div>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </Col>
+                <Col span={14} className={cx('wrapper-right')}>
+                    {activeRooms.length > 0 ? (
+                        <div>
+                            <div className={cx('header-section-messsage')}>
+                                <div className={cx('header-section-messsage-container')}>
+                                    <img src={avatar} alt="image-customer" className={cx('image-customer')} />
+                                    <div className={cx('info')}>
+                                        <h3 className={cx('name')}>{roomName}</h3>
+                                        <p className={cx('username')}>{fullname}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <SearchOutlined className={cx('icon')} />
+                                    {/* <MoreOutlined className={cx('icon')} /> */}
+                                    <Tooltip title="Delete">
+                                        <DeleteOutlined
+                                            style={{
+                                                color: '#ff4d4f',
+                                                cursor: 'pointer',
+                                                fontSize: '2rem',
+                                                marginLeft: '10px',
+                                            }}
+                                            onClick={() => {
+                                                handleDelete('deleteRoom');
+                                            }}
+                                        />
+                                    </Tooltip>
+                                </div>
+                            </div>
+                            <div className={cx('body-section-messsage')} ref={messageContainerRef}>
+                                <ul className={cx('message-list')}>
+                                    {messages.map((msg, index) => (
+                                        <li
+                                            className={cx(
+                                                msg.role === 'user' ? 'message-customer-item' : 'message-admin-item',
+                                            )}
+                                        >
+                                            <div className={cx('wrapper-image')}>
+                                                <img
+                                                    src={msg.role === 'user' ? avatar : images.logoChat}
+                                                    alt="image"
+                                                    className={cx('image-customer')}
+                                                />
+                                            </div>
+                                            <div
+                                                className={cx(
+                                                    msg.role === 'user' ? 'content-customer' : 'content-admin',
+                                                )}
+                                            >
+                                                <p className={cx('message')}>
+                                                    {parseMessages(msg.content)}
+                                                    <p className={cx('time')}>8 mins ago</p>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className={cx('footer-section-messsage')}>
+                                <div className={cx('input-message')}>
+                                    <input
+                                        type="text"
+                                        placeholder="Type your messasge"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                    />
+                                    <div className={cx('wrapper-icon')}>
+                                        <SendOutlined className={cx('icon-send')} onClick={sendMessage} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div
+                            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}
+                        >
+                            <Empty />
+                        </div>
+                    )}
+                </Col>
+
+                <Modal
+                    title="Bạn Có Chắc Chắn Muốn Xóa Không ?"
+                    visible={showModal}
+                    onOk={handleOk}
+                    onCancel={() => setShowModal(false)}
+                    style={{ marginTop: '150px' }}
+                >
+                    <p>
+                        <span style={{ fontWeight: '700', fontSize: '1.5rem' }}>DELETE ?</span>
+                    </p>
+                </Modal>
+            </Row>
+        </div>
     );
 }
 

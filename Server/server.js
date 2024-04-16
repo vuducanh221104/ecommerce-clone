@@ -114,7 +114,7 @@ socketIo.on('connection', (socket) => {
 });
 
 // Delete all room have a redis
-app.delete('/deleteAllRooms', (req, res) => {
+app.delete('/api/deleteAllRooms', (req, res) => {
     // Fetch all active rooms
     redis.lrange('activeRooms', 0, -1, (err, rooms) => {
         if (err) {
@@ -151,7 +151,7 @@ app.delete('/deleteAllRooms', (req, res) => {
     });
 });
 // When Room Created Admin will recived all rooms
-app.get('/activeRooms', (req, res) => {
+app.get('/api/activeRooms', (req, res) => {
     redis.lrange('activeRooms', 0, -1, (err, data) => {
         if (err) {
             console.error('Lỗi khi truy xuất danh sách phòng từ Redis:', err);
@@ -166,7 +166,7 @@ app.get('/activeRooms', (req, res) => {
 });
 
 // Define a new route for fetching chat history
-app.get('/chat-history/:roomName', (req, res) => {
+app.get('/api/chat-history/:roomName', (req, res) => {
     const roomName = req.params.roomName;
 
     // Fetch chat history from Redis based on the roomName
@@ -185,7 +185,7 @@ app.get('/chat-history/:roomName', (req, res) => {
 });
 
 // Delete a specific room and all its messages
-app.delete('/deleteRoom/:roomName', (req, res) => {
+app.delete('/api/deleteRoom/:roomName', (req, res) => {
     const roomName = req.params.roomName;
 
     // Delete the room from the list of active rooms
@@ -210,7 +210,7 @@ app.delete('/deleteRoom/:roomName', (req, res) => {
 });
 
 // Delete a specific room and all its messages
-app.delete('/deleteRoomm', (req, res) => {
+app.delete('/api/deleteRoomm', (req, res) => {
     const { roomName, avatar, fullname } = req.body;
 
     // Delete the room from the list of active rooms

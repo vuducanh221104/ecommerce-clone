@@ -7,7 +7,7 @@ import images from '~/assets/images';
 import socketIOClient from 'socket.io-client';
 import axiosRequest from '~/utils/axiosRequest';
 import { useSelector } from 'react-redux';
-import { chatHistory } from '~/services/websocketServices';
+import { chatHistory } from '~/pages/Admin/services/chatServices';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

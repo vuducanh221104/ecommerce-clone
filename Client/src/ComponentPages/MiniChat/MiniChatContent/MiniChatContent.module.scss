@@ -26,7 +26,8 @@
     padding: 15px;
     display: flex;
     flex-flow: column;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden !important;
 }
 .message-content::-webkit-scrollbar {
     border-radius: 50%;

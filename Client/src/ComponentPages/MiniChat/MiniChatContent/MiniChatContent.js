@@ -11,7 +11,7 @@ import { chatHistory } from '~/services/websocketServices';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const host = process.env.REACT_APP_BASE_URL;
+const host = 'http://3.138.136.200:4000/';
 
 const cx = classNames.bind(styles);
 
@@ -117,11 +117,8 @@ function MiniChatContent({ showChat, setShowChat, role = 'user', roomName, avata
                 <h3>Chat Với Minh Tuấn Moblie</h3>
                 <FontAwesomeIcon icon={faXmark} className={cx('icon-close')} onClick={() => setShowChat(false)} />
             </div>
-            <div style={{fontSize:'1.2rem' ,paddingTop:'5px'}}>
-            ID room {roomName}
-            </div>
+            <div style={{ fontSize: '1.2rem', paddingTop: '5px' }}>ID room {roomName}</div>
             <div className={cx('message-content')} ref={messageContainerRef}>
-                
                 {/* MESSAGE MAP */}
                 <div className={cx('message-block')}>
                     <div className={cx('container-meessage')}>

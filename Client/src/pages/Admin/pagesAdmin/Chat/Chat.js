@@ -8,7 +8,7 @@ import images from '~/assets/images';
 import socketIOClient from 'socket.io-client';
 import { deleteAllRoom, chatHistory, deleteRoom, activeRoom } from '../../services/chatServices';
 
-const host = process.env.CHAT_BASE_URL;
+const host = 'http://3.138.136.200:4000/';
 
 const cx = classNames.bind(styles);
 function Chat({ role = 'admin' }) {
@@ -25,6 +25,7 @@ function Chat({ role = 'admin' }) {
     const socketRef = useRef();
     const messageContainerRef = useRef(null);
 
+    console.log(roomName);
     useEffect(() => {
         socketRef.current = socketIOClient.connect(host);
 
@@ -47,11 +48,13 @@ function Chat({ role = 'admin' }) {
             .then((response) => {
                 const dataRoom = response;
                 setActiveRooms(dataRoom);
-                // Defalut join room frist
-                handleDefaultRoom(dataRoom);
-                //
-                if (dataRoom.roomName.length === 0) {
+                // Default join room first if there are active rooms
+                if (dataRoom.length > 0) {
+                    handleDefaultRoom(dataRoom);
+                } else {
+                    // Handle the case when there are no active rooms
                     setMessages([]);
+                    console.error('No active rooms found.');
                 }
             })
             .catch((error) => {
@@ -92,12 +95,18 @@ function Chat({ role = 'admin' }) {
             });
     };
     const handleDefaultRoom = (data) => {
-        setRoomName(data[0].roomName);
-        setAvatar(data[0].avatar);
-        setFullname(data[0].fullname);
-        // Handle
-        handleJoinRoom(data[0].roomName);
+        if (data && data.length > 0) {
+            setRoomName(data[0].roomName);
+            setAvatar(data[0].avatar);
+            setFullname(data[0].fullname);
+            // Handle
+            handleJoinRoom(data[0].roomName);
+        } else {
+            // Xử lý khi không có phòng nào hoạt động
+            console.error('No active rooms found.');
+        }
     };
+
     const handleOtherRoom = (data) => {
         setRoomName(data.roomName);
         setAvatar(data.avatar);
@@ -125,7 +134,7 @@ function Chat({ role = 'admin' }) {
                 setFullname('');
                 setRoomName('');
                 setMessages([]);
-                setActiveRooms((prev) => prev.filter((item) => item.roomName !== roomName));
+                setActiveRooms((prev) => prev?.filter((item) => item.roomName !== roomName));
             })
             .catch((error) => {
                 console.error('Error deleting room:', error);
@@ -190,7 +199,7 @@ function Chat({ role = 'admin' }) {
                     <div className={cx('customer')}>
                         <ul className={cx('customer-list')}>
                             {filteredearchRoom.map((item, index) => (
-                                <div className={cx('wrappper-customer-item')}>
+                                <div className={cx('wrappper-customer-item')} key={index}>
                                     <li
                                         className={cx('customer-item')}
                                         onClick={() => {

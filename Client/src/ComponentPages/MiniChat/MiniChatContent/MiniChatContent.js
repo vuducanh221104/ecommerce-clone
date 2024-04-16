@@ -11,7 +11,7 @@ import { chatHistory } from '~/services/websocketServices';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const host = 'http://3.138.136.200:4000/';
+const host = '3.138.136.200:4000/';
 
 const cx = classNames.bind(styles);
 

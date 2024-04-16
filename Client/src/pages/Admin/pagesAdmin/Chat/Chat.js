@@ -8,7 +8,7 @@ import images from '~/assets/images';
 import socketIOClient from 'socket.io-client';
 import { deleteAllRoom, chatHistory, deleteRoom, activeRoom } from '../../services/chatServices';
 
-const host = 'http://3.138.136.200:4000/';
+const host = '3.138.136.200:4000/';
 
 const cx = classNames.bind(styles);
 function Chat({ role = 'admin' }) {

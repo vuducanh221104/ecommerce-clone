@@ -44,6 +44,7 @@ function MiniChat() {
                             <div className={cx('wrapper')}>
                                 <MiniChatContent
                                     setShowChat={setShowChat}
+                                    setShowChatContent={setShowChatContent}
                                     showChat={showChat}
                                     roomName={dataUser?.username || roomName}
                                     avatar={dataUser?.avatar}

@@ -15,7 +15,7 @@ const host = process.env.REACT_APP_BASE_URL;
 
 const cx = classNames.bind(styles);
 
-function MiniChatContent({ showChat, setShowChat, role = 'user', roomName, avatar, fullname }) {
+function MiniChatContent({ showChat, setShowChat, setShowChatContent, role = 'user', roomName, avatar, fullname }) {
     const dataUser = useSelector((state) => state.auth.login.currentUser);
     const navigate = useNavigate();
     const [messages, setMessages] = useState([]);
@@ -115,7 +115,14 @@ function MiniChatContent({ showChat, setShowChat, role = 'user', roomName, avata
         <>
             <div className={cx('title')}>
                 <h3>Chat Với Minh Tuấn Moblie</h3>
-                <FontAwesomeIcon icon={faXmark} className={cx('icon-close')} onClick={() => setShowChat(false)} />
+                <FontAwesomeIcon
+                    icon={faXmark}
+                    className={cx('icon-close')}
+                    onClick={() => {
+                        setShowChat(false);
+                        setShowChatContent(false);
+                    }}
+                />
             </div>
             <div style={{ fontSize: '1.2rem', paddingTop: '5px' }}>ID room {roomName}</div>
             <div className={cx('message-content')} ref={messageContainerRef}>

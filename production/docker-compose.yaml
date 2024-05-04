@@ -15,7 +15,6 @@ services:
       - 27017
     # volumes:
     #   - ../mongodb-data/:/data/db
-    #test123
 
   backend:
     build:

@@ -30,7 +30,11 @@ redis.on('error', function (error) {
 
 app.use(
     cors({
-        origin: process.env.BASE_URL_CLIENT || '*',
+        origin: [
+            'http://www.cloneminhtuan.id.vn',
+            'https://www.cloneminhtuan.id.vn',
+            'https://www.cloneminhtuan.id.vn',
+        ],
         credentials: true,
     }),
 );

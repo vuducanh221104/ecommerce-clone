@@ -31,10 +31,11 @@ redis.on('error', function (error) {
 app.use(
     cors({
         origin: [
-            'http://www.cloneminhtuan.id.vn',
-            'https://www.cloneminhtuan.id.vn',
-            'https://cloneminhtuan.id.vn',
-            'http://localhost:3000',
+            `http://www.${process.env.BASE_URL_CLIENT}``http://${process.env.BASE_URL_CLIENT}``https://www.${process.env.BASE_URL_CLIENT}``https://${process.env.BASE_URL_CLIENT}`,
+            // 'http://www.cloneminhtuan.id.vn',
+            // 'https://www.cloneminhtuan.id.vn',
+            // 'https://cloneminhtuan.id.vn',
+            // 'http://localhost:3000',
         ],
         credentials: true,
     }),

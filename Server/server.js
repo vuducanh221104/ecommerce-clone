@@ -30,7 +30,7 @@ redis.on('error', function (error) {
 
 app.use(
     cors({
-        origin: [process.env.BASE_URL_CLIENT],
+        origin: [process.env.BASE_URL_CLIENT, 'https://cloneminhtuan.id.vn'],
         credentials: true,
     }),
 );

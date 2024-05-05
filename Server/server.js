@@ -33,7 +33,8 @@ app.use(
         origin: [
             'http://www.cloneminhtuan.id.vn',
             'https://www.cloneminhtuan.id.vn',
-            'https://www.cloneminhtuan.id.vn',
+            'https://cloneminhtuan.id.vn',
+            'http://localhost:3000',
         ],
         credentials: true,
     }),
